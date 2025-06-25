@@ -1,0 +1,19 @@
+{
+  "name": "top-colony-board",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CJ-Cepe/top-colony-board.git"
+  },
+  "author": "CJ-Cepe 😎",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CJ-Cepe/top-colony-board/issues"
+  },
+  "homepage": "https://github.com/CJ-Cepe/top-colony-board#readme",
+  "description": ""
+}
