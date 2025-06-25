@@ -1,15 +1,15 @@
 import path from "node:path";
-import express from "node:express";
+import express from "express";
 const app = express();
-import messageRoutes from "./routes/messageRouter.js";
+import { messageRouter } from "./routes/messageRouter.js";
 
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+/* app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views")); */
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+/* app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public")); */
 
-app.use("/", messageRoutes);
+app.use("/", messageRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => {

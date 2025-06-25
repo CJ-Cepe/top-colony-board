@@ -1,15 +1,18 @@
 //import message
 
-function displayHome(req, res) {
+const displayHome = (req, res) => {
   // generate home
-}
+  res.send("home");
+};
 
-function newMessageForm(req, res) {
+const newMessageForm = (req, res) => {
   // make view generate form
-}
+  res.send("form");
+};
 
-function postMessage(req, res) {
+const postMessage = (req, res) => {
   //res.redirect('/');
-}
+  res.send("message sent");
+};
 
 export { displayHome, newMessageForm, postMessage };
