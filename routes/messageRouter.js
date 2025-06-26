@@ -1,13 +1,9 @@
 import { Router } from "express";
 const router = Router();
-import {
-  displayHome,
-  newMessageForm,
-  postMessage,
-} from "../controllers/messageController.js";
+import * as messageController from "../controllers/messageController.js";
 
-router.get("/{index}", displayHome); // show board
-router.get("/new", newMessageForm); // show message form
-router.post("./message/:role", postMessage); // form submission
+router.get("/{index}", messageController.displayHome); // show board
+router.get("/new", messageController.newMessageForm); // show message form
+router.post("./message/:role", messageController.postMessage); // form submission
 
-export { router as messageRouter };
+export { router };

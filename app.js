@@ -1,10 +1,13 @@
 import path from "node:path";
 import express from "express";
-const app = express();
-import { messageRouter } from "./routes/messageRouter.js";
+import process from "node:process";
 
-/* app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views")); */
+const app = express();
+import { router as messageRouter } from "./routes/messageRouter.js";
+
+console.log(path.join(process.cwd(), "views"));
+app.set("views", path.join(process.cwd(), "views"));
+app.set("view engine", "ejs");
 
 /* app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public")); */
