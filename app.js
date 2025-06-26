@@ -1,18 +1,26 @@
 import path from "node:path";
-import express from "express";
 import process from "node:process";
-
+import express from "express";
+import session from "express-session";
+import { router } from "./routes/messageRouter.js";
 const app = express();
-import { router as messageRouter } from "./routes/messageRouter.js";
 
-console.log(path.join(process.cwd(), "views"));
 app.set("views", path.join(process.cwd(), "views"));
 app.set("view engine", "ejs");
 
-/* app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public")); */
+app.use(express.urlencoded({ extended: true }));
+/* app.use(express.static("public")); */
 
-app.use("/", messageRouter);
+app.use(
+  session({
+    secret: "colony-secret",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
+  })
+);
+
+app.use("/", router);
 
 const PORT = 3000;
 app.listen(PORT, () => {
