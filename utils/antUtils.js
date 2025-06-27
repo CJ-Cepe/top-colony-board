@@ -9,6 +9,32 @@ const roles = {
   ],
 };
 
+const description = {
+  // 🐜 Common Roles
+  worker:
+    "A hardworking ant focused on building, repairing, and transporting resources.",
+  scout: "An adventurous ant always looking for new food sources and paths.",
+  soldier: "A strong defender of the colony, always on guard against threats.",
+  cleaner:
+    "Maintains colony hygiene by removing waste and keeping tunnels tidy.",
+
+  "lazy-ant":
+    "Frequently seen napping. Occasionally thinks about helping... later.",
+  antfluencer:
+    "Buzzing with style and updates. Lives for aesthetics and attention.",
+  drone:
+    "A winged ant with royal aspirations. Mostly daydreaming or waiting for the queen.",
+
+  "impostor-termite":
+    "Totally not a termite. Please ignore the suspicious behavior.",
+  "queen-lover":
+    "Deeply devoted to the queen. Maybe too devoted. Possibly writing poetry.",
+  "philosopher-ant":
+    "Always questioning the colony’s purpose. Existentialism in the tunnels.",
+  "gossiping-ant":
+    "Knows everything about everyone and can’t wait to share it.",
+};
+
 const topics = {
   worker: [
     "Maintenance report",
@@ -83,4 +109,8 @@ function getTopics(role) {
   return topics[role] || [];
 }
 
-export { generateAntName, getRandomRole, getTopics };
+function getDescription(role) {
+  return description[role] || "";
+}
+
+export { generateAntName, getRandomRole, getTopics, getDescription };

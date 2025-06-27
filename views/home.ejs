@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Colony Board</title>
+    <meta
+      name="description"
+      content="A message board for ants to share updates, discuss topics, and connect within the colony."
+    />
+    <meta name="keywords" content="message-board, message, ants, colony" />
+    <meta name="author" content="CJ-Cepe" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main></main>
+    <div class="ant-identity">
+      <p>
+        You are: <strong><%= role %></strong> named <strong><%= name %></strong>
+      </p>
+      <p><%= description %></p>
+      <a href="/reborn">🐜 Reborn as a new ant</a>
+    </div>
+    <a href="/new">Create Message</a>
+    <% for(const message of messages) {%>
+    <div class="card" style="margin-bottom: 5rem">
+      <p><%= message.name %></p>
+      <p><%= message.role %></p>
+      <p><%= message.topic %></p>
+      <p><%= message.content %></p>
+      <p><%= message.timestamp %></p>
+    </div>
+    <% } %>
+  </body>
+</html>
