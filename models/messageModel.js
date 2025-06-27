@@ -8,7 +8,32 @@ const messagesFile =
 function getAllMessages() {
   try {
     const data = fs.readFileSync(messagesFile, "utf-8");
-    return JSON.parse(data);
+    const messages = JSON.parse(data);
+
+    const processedMessages = messages.map((message) => {
+      let dateObj;
+      if (typeof message.timestamp === "string") {
+        dateObj = new Date(message.timestamp);
+      } else if (message.timestamp instanceof Date) {
+        dateObj = message.timestamp;
+      } else {
+        dateObj = new Date();
+      }
+
+      const formattedDateString = dateObj.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+
+      return {
+        ...message,
+        timestamp: formattedDateString,
+      };
+    });
+
+    return processedMessages;
+    //return JSON.parse(data);
   } catch (err) {
     console.error("Failed to read messages:", err);
     return [];
