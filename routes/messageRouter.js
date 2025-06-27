@@ -11,7 +11,7 @@ import {
 router.get("/{index}", ensureIdentity, renderBoardPage);
 router.get("/new", ensureIdentity, renderNewMessageForm);
 router.get("/reborn", handleRebornRequest);
-router.post("./message/:role", handlePostMessage);
+router.post("/message", handlePostMessage);
 
 // to add error handler
 
