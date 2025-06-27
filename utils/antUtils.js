@@ -10,7 +10,6 @@ const roles = {
 };
 
 const description = {
-  // 🐜 Common Roles
   worker:
     "A hardworking ant focused on building, repairing, and transporting resources.",
   scout: "An adventurous ant always looking for new food sources and paths.",
@@ -113,4 +112,18 @@ function getDescription(role) {
   return description[role] || "";
 }
 
-export { generateAntName, getRandomRole, getTopics, getDescription };
+function assignNewAntIdentityToSession(session) {
+  const role = getRandomRole();
+  const name = generateAntName(role);
+  const description = getDescription(role);
+  const topics = getTopics(role);
+
+  session.role = role;
+  session.name = name;
+  session.description = description;
+  session.topics = topics;
+
+  return { role, name, description, topics };
+}
+
+export { assignNewAntIdentityToSession };

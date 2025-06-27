@@ -1,26 +1,21 @@
 import { getAllMessages, saveMessage } from "../models/messageModel.js";
+import { assignNewAntIdentityToSession } from "../utils/antUtils.js";
 import { sanitizePlainText } from "../utils/sanitizer.js";
-import {
-  getRandomRole,
-  generateAntName,
-  getTopics,
-  getDescription,
-} from "../utils/antUtils.js";
 
 const renderBoardPage = (req, res) => {
-  const name = req.session.name;
-  const role = req.session.role;
-  const description = req.session.description;
+  const { name, role, description } = req.session;
   const messages = getAllMessages();
   res.render("home", { name, role, description, messages });
 };
 
 const renderNewMessageForm = (req, res) => {
-  const name = req.session.name;
-  const role = req.session.role;
-  const description = req.session.description;
-  const topics = req.session.topics;
+  const { name, role, description, topics } = req.session;
   res.render("new", { name, role, description, topics });
+};
+
+const handleRebornRequest = (req, res) => {
+  assignNewAntIdentityToSession(req.session);
+  res.redirect("/");
 };
 
 const handlePostMessage = (req, res) => {
@@ -39,18 +34,6 @@ const handlePostMessage = (req, res) => {
   };
 
   saveMessage(newEntry);
-  res.redirect("/");
-};
-
-const handleRebornRequest = (req, res) => {
-  const role = getRandomRole();
-  const name = generateAntName(role);
-  const description = getDescription(role);
-  const topics = getTopics(role);
-  req.session.role = role;
-  req.session.name = name;
-  req.session.topics = topics;
-  req.session.description = description;
   res.redirect("/");
 };
 
