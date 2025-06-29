@@ -34,15 +34,17 @@
     <!-- MESSAGE BOARD -->
     <main class="message-board">
       <h2>The Pheromone Trail</h2>
-      <% for(const message of messages) {%>
-      <div class="message-card">
-        <p class="card-name"><%= message.name %></p>
-        <p class="card-role"><%= message.role %></p>
-        <p class="card-topic"><%= message.topic %></p>
-        <p class="card-content"><%= message.content %></p>
-        <p class="card-timestamp"><%= message.timestamp %></p>
+      <div class="message-card-container">
+        <% for(const message of messages) {%>
+        <div class="message-card">
+          <!-- <p class="card-role"><%= message.role %></p> -->
+          <p class="card-topic"><%= message.topic %></p>
+          <p class="card-content"><%= message.content %></p>
+          <p class="card-name"><%= message.name %></p>
+          <p class="card-timestamp"><%= message.timestamp %></p>
+        </div>
+        <% } %>
       </div>
-      <% } %>
     </main>
 
     <!-- ASIDE -->
