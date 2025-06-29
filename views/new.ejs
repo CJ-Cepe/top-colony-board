@@ -5,37 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+
   <body>
+    <!-- HEADER -->
+    <%- include("partials/_header.ejs") %>
+
+    <!-- NEW MESSAGE FORM -->
     <main>
-      <article>
-        <header>
-          <h2><%= name %></h2>
-          <p><%= role %></p>
-        </header>
-        <form action="/message" method="post">
-          <input type="hidden" name="name" value="<%= name %>" />
-          <input type="hidden" name="role" value="<%= role %>" />
+      <h2>Create Pheromone to Release</h2>
+      <form action="/message" method="post">
+        <input type="hidden" name="name" value="<%= name %>" />
+        <input type="hidden" name="role" value="<%= role %>" />
 
-          <label for="topic">
-            Pick a topic
-            <select name="topic" id="topic" required>
-              <option value="" disabled selected>-- Choose a topic --</option>
+        <label for="topic">
+          Pick a topic
+          <select name="topic" id="topic" required>
+            <option value="" disabled selected>-- Choose a topic --</option>
 
-              <% for (const topic of topics) { %>
-              <option value="<%= topic %>"><%= topic %></option>
-              <% } %>
-            </select>
-          </label>
+            <% for (const topic of topics) { %>
+            <option value="<%= topic %>"><%= topic %></option>
+            <% } %>
+          </select>
+        </label>
 
-          <label for="content">
-            Message <span aria-hidden="true">*</span>
-            <textarea name="content" id="content" required> </textarea>
-          </label>
+        <label for="content">
+          Message <span aria-hidden="true">*</span>
+          <textarea name="content" id="content" required></textarea>
+        </label>
 
-          <button type="submit">Send Message</button>
-          <a href="../">Cancel</a>
-        </form>
-      </article>
+        <button type="submit">Release Pheromone</button>
+        <a href="../">Return to Trail</a>
+      </form>
     </main>
+
+    <!-- ASIDE -->
+    <%- include("partials/_aside.ejs", {renderButton: false}) %>
   </body>
 </html>

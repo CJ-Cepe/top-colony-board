@@ -14,23 +14,24 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <main></main>
-    <div class="ant-identity">
-      <p>
-        You are: <strong><%= role %></strong> named <strong><%= name %></strong>
-      </p>
-      <p><%= description %></p>
-      <a href="/reborn">🐜 Reborn as a new ant</a>
-    </div>
-    <a href="/new">Create Message</a>
-    <% for(const message of messages) {%>
-    <div class="card" style="margin-bottom: 5rem">
-      <p><%= message.name %></p>
-      <p><%= message.role %></p>
-      <p><%= message.topic %></p>
-      <p><%= message.content %></p>
-      <p><%= message.timestamp %></p>
-    </div>
-    <% } %>
+    <!-- HEADER -->
+    <%- include("partials/_header.ejs") %>
+
+    <!-- MESSAGE BOARD -->
+    <main class="message-board">
+      <h2>The Pheromone Trail</h2>
+      <% for(const message of messages) {%>
+      <div class="message-card">
+        <p class="card-name"><%= message.name %></p>
+        <p class="card-role"><%= message.role %></p>
+        <p class="card-topic"><%= message.topic %></p>
+        <p class="card-content"><%= message.content %></p>
+        <p class="card-timestamp"><%= message.timestamp %></p>
+      </div>
+      <% } %>
+    </main>
+
+    <!-- ASIDE -->
+    <%- include("partials/_aside.ejs", {renderButton: true}) %>
   </body>
 </html>

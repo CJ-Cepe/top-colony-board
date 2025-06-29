@@ -1,0 +1,48 @@
+<aside class="page-aside">
+  <!-- PROFILE SECTION -->
+  <section class="profile">
+    <h2>Your ANTdentity</h2>
+    <p class="profile-name"><%= name %></p>
+    <p class="profile-role"><%= role %></p>
+    <p class="profile-description"><%= description %></p>
+
+    <% if(renderButton) { %>
+    <a href="/reborn" class="button profile-reborn">Reborn as a new ant</a>
+    <a href="/new" class="button profile-new">Produce Pheromone</a>
+    <% } %>
+  </section>
+
+  <!-- RULES SECTION -->
+  <section class="rules">
+    <h2 class="rules-title">The Queen Demands Communication!</h2>
+    <p class="rules-subtitle">
+      The prosperity of our glorious colony depends on clear communication. As a
+      faithful member of the swarm, heed these instructions and follow the
+      pheromone trail!
+    </p>
+    <ul class="rules-list">
+      <li>
+        <em>Born to Serve:</em> You’ve emerged into the colony as an ant — with
+        a name, a role, and a duty.
+      </li>
+      <li>
+        <em>The Cycle of Life:</em> Your identity is bound to this tab. When it
+        closes, you fade — as all ants do.
+      </li>
+      <li>
+        <em>Collective Memory:</em> While individual ants perish, the colony
+        remembers. Your messages are its legacy.
+      </li>
+      <li>
+        <em>Pheromone Protocol:</em> Stay in character. Think like an ant. Speak
+        like an ant.
+      </li>
+      <li>
+        <em>Share Discoveries:</em> Use the Release Pheromone button to
+        broadcast food sightings, alerts, or existential dread to your fellow
+        ants.
+      </li>
+    </ul>
+    <p class="rules-cta">Add your voice to the swarm!</p>
+  </section>
+</aside>
