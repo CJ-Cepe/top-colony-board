@@ -1,24 +1,25 @@
 <aside class="page-aside">
   <!-- PROFILE SECTION -->
   <section class="profile">
-    <h2>Your ANTdentity</h2>
-    <p class="profile-name"><%= name %></p>
-    <p class="profile-role"><%= role %></p>
-    <p class="profile-description"><%= description %></p>
+    <h2 class="profile-title">Your ANTdentity</h2>
+    <p class="profile-name"><span>Name:</span> <%= name %></p>
+    <p class="profile-role"><span>Role:</span> <%= role %></p>
+    <p class="profile-description"><span>Desc:</span> <%= description %></p>
 
     <% if(renderButton) { %>
-    <a href="/reborn" class="button profile-reborn">Reborn as a new ant</a>
+    <a href="/reborn" class="button profile-reborn">Reborn</a>
     <a href="/new" class="button profile-new">Produce Pheromone</a>
     <% } %>
   </section>
+
+  <hr />
 
   <!-- RULES SECTION -->
   <section class="rules">
     <h2 class="rules-title">The Queen Demands Communication!</h2>
     <p class="rules-subtitle">
       The prosperity of our glorious colony depends on clear communication. As a
-      faithful member of the swarm, heed these instructions and follow the
-      pheromone trail!
+      faithful member of the swarm, heed these instructions:
     </p>
     <ul class="rules-list">
       <li>

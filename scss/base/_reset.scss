@@ -4,6 +4,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  /* padding: 0; */
 }
 
 /* Prevent font size inflation */
@@ -88,4 +90,44 @@ textarea:not([rows]) {
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 5ex;
+}
+
+button,
+a {
+  /* Core appearance reset */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Zero out padding, margin, border */
+  background: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  /* Font inheritance and crucial line-height normalization */
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1; /* Explicitly set to 1 for tight text bounding box */
+  color: inherit;
+  text-decoration: none;
+  text-align: center;
+
+  /* Standard cursor */
+  cursor: pointer;
+
+  /* Display property: inline-flex is great for internal alignment,
+     but sometimes inline-block can resolve height issues if flex is misbehaving.
+     Let's stick with inline-flex as it's powerful, but ensure consistency. */
+  display: inline-flex;
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+
+  /* Specific Firefox button reset */
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
 }
