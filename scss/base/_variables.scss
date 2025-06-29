@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "ComicRelief";
+  src: url("/fonts/ComicRelief-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rajdhani";
+  src: url("/fonts/Rajdhani-Medium.ttf") format("truetype");
+  font-weight: medium;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* === Colors === */
+  /* Primary */
+  --color-navy-850: hsl(217, 28%, 15%);
+  --color-navy-900: hsl(218, 28%, 13%);
+  --color-navy-950: hsl(216, 53%, 9%);
+  --color-navy-800: hsl(219, 30%, 18%);
+
+  /* Accent */
+  --color-teal-200: hsl(176, 68%, 64%);
+  --color-cyan-500: hsl(198, 60%, 50%);
+  --color-red-500: hsl(0, 100%, 63%);
+
+  /* Neutral */
+  --color-white: hsl(0, 0%, 100%);
+
+  /* === Typography === */
+  /* Font families */
+  --font-family-heading: "Rajdhani", Arial, sans-serif;
+  --font-family-base: "ComicRelief", Arial, sans-serif;
+
+  /* Font sizes */
+  --font-size-base: calc(14rem / 16);
+  --line-height-base: 1.5;
+  --scale-ratio: 1.333;
+
+  --font-size-sm: calc(var(--font-size-base) / var(--scale-ratio));
+  --font-size-md: var(--font-size-base);
+  --font-size-lg: calc(var(--font-size-base) * var(--scale-ratio));
+  --font-size-xl: calc(
+    var(--font-size-base) * var(--scale-ratio) * var(--scale-ratio)
+  );
+
+  /* Font weights */
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-unit: 0.5rem; /* Base spacing unit */
+  --spacing-sm: var(--spacing-unit); /* 8px */
+  --spacing-md: calc(var(--spacing-unit) * 2); /* 16px */
+  --spacing-lg: calc(var(--spacing-unit) * 3); /* 24px */
+}
