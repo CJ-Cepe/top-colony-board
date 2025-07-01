@@ -9,7 +9,7 @@ app.set("views", path.join(process.cwd(), "views"));
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
-/* app.use(express.static("public")); */
+app.use(express.static("public"));
 
 app.use(
   session({
@@ -22,7 +22,13 @@ app.use(
 
 app.use("/", router);
 
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send(err.message);
+});
+
 const PORT = 3000;
+
 app.listen(PORT, () => {
   console.log(`Colony Board is live at http://localhost:${PORT}`);
 });
