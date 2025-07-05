@@ -1,0 +1,60 @@
+.message-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form {
+  max-width: 20rem;
+
+  display: grid;
+  grid-template-areas:
+    "topic topic"
+    "content content"
+    "return send";
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg);
+
+  label > select,
+  label > textarea {
+    display: block;
+    margin-top: var(--spacing-sm);
+  }
+}
+
+.form-topic {
+  grid-area: topic;
+  width: 100%;
+
+  & > select {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.form-content {
+  grid-area: content;
+  width: 100%;
+
+  & > textarea {
+    width: 100%;
+    resize: vertical;
+    padding: var(--spacing-sm);
+  }
+}
+
+.form-return {
+  grid-area: return;
+  width: 100%;
+}
+
+.form-send {
+  grid-area: send;
+  width: 100%;
+}
+
+.message-form > img {
+  margin-top: var(--spacing-lg);
+}

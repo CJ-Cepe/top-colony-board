@@ -27,14 +27,14 @@
     <%- include("partials/_header.ejs") %>
 
     <!-- NEW MESSAGE FORM -->
-    <main>
+    <main class="message-form">
       <h2>Create Pheromone to Release</h2>
-      <form action="/message" method="post">
+      <form class="form" action="/message" method="post">
         <input type="hidden" name="name" value="<%= name %>" />
         <input type="hidden" name="role" value="<%= role %>" />
 
-        <label for="topic">
-          Pick a topic
+        <label for="topic" class="form-topic">
+          1. Pick a Topic <span aria-hidden="true">*</span>
           <select name="topic" id="topic" required>
             <option value="" disabled selected>-- Choose a topic --</option>
 
@@ -44,14 +44,31 @@
           </select>
         </label>
 
-        <label for="content">
-          Message <span aria-hidden="true">*</span>
-          <textarea name="content" id="content" required></textarea>
+        <label for="content" class="form-content">
+          2. Message <span aria-hidden="true">*</span>
+          <textarea
+            name="content"
+            id="content"
+            required
+            placeholder="..."
+          ></textarea>
         </label>
 
-        <button type="submit" class="button">Release Pheromone</button>
-        <a href="../" class="button">Return to Trail</a>
+        <a href="../" class="button form-return">Return to Trail</a>
+
+        <button type="submit" class="button form-send">
+          Release Pheromone
+        </button>
       </form>
+
+      <img
+        src="/images/ant2-svgrepo-com.svg"
+        alt=""
+        width="100"
+        height="auto"
+      />
+
+      <img src="/images/line-svgrepo.svg" alt="" width="120" height="auto" />
     </main>
 
     <!-- ASIDE -->
