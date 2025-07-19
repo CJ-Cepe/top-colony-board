@@ -5,12 +5,12 @@ import { sanitizePlainText } from "../utils/sanitizer.js";
 const renderBoardPage = (req, res) => {
   const { name, role, description } = req.session;
   const messages = getAllMessages();
-  res.render("home", { name, role, description, messages });
+  res.render("home", { viewType: "board", name, role, description, messages });
 };
 
 const renderNewMessageForm = (req, res) => {
   const { name, role, description, topics } = req.session;
-  res.render("new", { name, role, description, topics });
+  res.render("home", { viewType: "form", name, role, description, topics });
 };
 
 const handleRebornRequest = (req, res) => {
