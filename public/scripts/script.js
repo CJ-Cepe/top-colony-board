@@ -1,5 +1,6 @@
 const hamBtn = document.querySelector(".ham-btn");
 const asideMenu = document.querySelector(".page-aside");
+const main = document.querySelector("main");
 const media = window.matchMedia("(max-width: 685px)");
 
 // === helpers ===
@@ -45,6 +46,17 @@ function syncMenuState() {
   }
 }
 
+function toggleHamBtn() {
+  const currentAriaExpanded = hamBtn.getAttribute("aria-expanded") === "true";
+  hamBtn.setAttribute("aria-expanded", !currentAriaExpanded);
+  syncMenuState();
+}
+
+function updateMainHeight() {
+  const asideHeight = asideMenu.offsetHeight;
+  main.style.minHeight = asideHeight + "px";
+}
+
 // === listeners ===
 
 // 1. set initial state on page load
@@ -54,11 +66,23 @@ document.addEventListener("DOMContentLoaded", syncMenuState);
 media.addEventListener("change", syncMenuState);
 
 // 3. handle hamburger button click
-hamBtn.addEventListener("click", () => {
-  const currentAriaExpanded = hamBtn.getAttribute("aria-expanded") === "true";
-  hamBtn.setAttribute("aria-expanded", !currentAriaExpanded);
-  syncMenuState();
+hamBtn.addEventListener("click", toggleHamBtn);
+
+document.addEventListener("click", (e) => {
+  const clickedWithinHamBtn = hamBtn.contains(e.target);
+  const clickedWithinAside = asideMenu.contains(e.target);
+  if (
+    !clickedWithinAside &&
+    !clickedWithinHamBtn &&
+    asideMenu.classList.contains("visible")
+  ) {
+    toggleHamBtn();
+  }
 });
+
+// 4. handle main min-size based on aside height
+window.addEventListener("load", updateMainHeight);
+window.addEventListener("resize", updateMainHeight);
 
 /* 
 State 0 default - width > 685
