@@ -1,11 +1,18 @@
 .message-form {
+  background-color: var(--color-bronze-500);
+  padding: var(--spacing-lg);
+
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  h2 {
+    text-align: center;
+  }
 }
 
 .form {
-  max-width: 20rem;
+  max-width: 25rem;
 
   display: grid;
   grid-template-areas:
@@ -14,13 +21,15 @@
     "return send";
   grid-template-columns: 1fr 1fr;
   justify-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
   margin: var(--spacing-lg);
 
   label > select,
   label > textarea {
     display: block;
+    color: var(--color-maroon-900);
     margin-top: var(--spacing-sm);
+    background-color: var(--color-gold-500);
   }
 }
 
@@ -55,6 +64,6 @@
   width: 100%;
 }
 
-.message-form > img {
-  margin-top: var(--spacing-lg);
+.message-form > img:nth-child(3) {
+  margin-top: 3rem;
 }

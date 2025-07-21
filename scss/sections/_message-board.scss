@@ -1,5 +1,6 @@
 .message-board {
   padding: var(--spacing-lg);
+  background-color: var(--color-bronze-500);
 
   h2 {
     text-align: center;
@@ -11,16 +12,21 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--spacing-lg);
+  justify-items: center;
 }
 
 .message-card {
-  background-color: antiquewhite;
+  background-color: var(--color-walnut-600);
+
+  max-width: 400px;
+  width: 100%;
   aspect-ratio: 1 / 1;
   padding: var(--spacing-lg);
 
   display: flex;
   flex-direction: column;
 
+  position: relative;
   -webkit-clip-path: polygon(
     0% 0%,
     calc(100% - 30px) 0%,
@@ -36,7 +42,13 @@
     0% 100%
   );
 
-  position: relative;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus-within {
+    transform: scale(1.05);
+    z-index: 2;
+  }
 
   &::before {
     content: "";
@@ -62,12 +74,14 @@
   font-weight: bold;
   font-size: var(--font-size-lg);
   text-transform: capitalize;
+  color: var(--color-sand-100);
 }
 
 .card-content {
   margin: auto 0 auto;
   text-wrap: balance;
   text-wrap: pretty;
+  color: var(--color-yellow-400);
 
   &::before,
   &::after {
@@ -80,9 +94,11 @@
   text-transform: uppercase;
   font-weight: 600;
   align-self: flex-end;
+  color: var(--color-gold-500);
 }
 
 .card-timestamp {
   align-self: flex-end;
   font-style: italic;
+  color: var(--color-gold-500);
 }

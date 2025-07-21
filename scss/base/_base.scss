@@ -1,31 +1,44 @@
 body {
   font-family: var(--font-family-base);
+  color: var(--color-maroon-900);
 
   display: grid;
   grid-template-areas:
-    "header header header"
-    "main main aside";
-  grid-template-columns: 1fr 1fr 300px;
+    "header"
+    "main";
   grid-template-rows: auto 1fr;
 
   & > header {
     grid-area: header;
-    background-color: antiquewhite;
   }
 
   & > main {
     grid-area: main;
-    background-color: rgb(202, 147, 75);
   }
 
-  & > aside {
-    grid-area: aside;
-    background-color: rgb(110, 70, 17);
+  &::selection {
+    color: var(--color-sand-100);
+    background: var(--color-copper-700);
   }
 }
 
+// headers
 h1,
 h2 {
   font-weight: bold;
   font-family: var(--font-family-heading);
+}
+
+// general button
+.button {
+  padding: 0.5em;
+  text-decoration: none;
+  border-radius: 0.5vw;
+  border: 1px dashed var(--color-maroon-900);
+  background-color: var(--color-yellow-600);
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-yellow-400);
+  }
 }

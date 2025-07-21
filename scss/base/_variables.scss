@@ -16,16 +16,30 @@
 
 :root {
   /* === Colors === */
-  /* Primary */
-  --color-navy-850: hsl(217, 28%, 15%);
-  --color-navy-900: hsl(218, 28%, 13%);
-  --color-navy-950: hsl(216, 53%, 9%);
-  --color-navy-800: hsl(219, 30%, 18%);
+  --color-orange-600: #c06431;
 
-  /* Accent */
-  --color-teal-200: hsl(176, 68%, 64%);
-  --color-cyan-500: hsl(198, 60%, 50%);
-  --color-red-500: hsl(0, 100%, 63%);
+  --color-gray-500: #848474;
+  --color-copper-700: #9d4a24;
+  --color-tan-600: #a1905b;
+
+  --color-olive-700: #8d9f40;
+
+  // ----
+  --color-bronze-500: #b38658;
+  --color-walnut-600: #6c4f3d;
+  --color-yellow-400: #e2a94f;
+  --color-gold-500: #d0ac7a;
+  --color-lime-400: #a6e156;
+  --color-sand-100: #f2eee3;
+  --color-maroon-900: #3b1c24;
+  --color-yellow-600: #c69301;
+  --color-lime-500: #77ba4e;
+
+  --color-brown-700: #795243;
+  --color-stone-700: #5e584f;
+
+  --color-charcoal-900: #2e2b27;
+  --color-ivory-50: #fffdf8;
 
   /* Neutral */
   --color-white: hsl(0, 0%, 100%);
@@ -45,6 +59,10 @@
   --font-size-lg: calc(var(--font-size-base) * var(--scale-ratio));
   --font-size-xl: calc(
     var(--font-size-base) * var(--scale-ratio) * var(--scale-ratio)
+  );
+  --font-size-2xl: calc(
+    var(--font-size-base) * var(--scale-ratio) * var(--scale-ratio) *
+      var(--scale-ratio)
   );
 
   /* Font weights */
