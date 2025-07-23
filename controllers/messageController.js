@@ -1,6 +1,9 @@
 import { getAllMessages, saveMessage } from "../models/messageModel.js";
 import { assignNewAntIdentityToSession } from "../utils/antUtils.js";
-import { sanitizePlainText } from "../utils/sanitizer.js";
+import {
+  validateMessageForm,
+  checkValidationResult,
+} from "../middlewares/sanitizer.js";
 
 const renderBoardPage = (req, res) => {
   const { name, role, description } = req.session;
@@ -18,24 +21,23 @@ const handleRebornRequest = (req, res) => {
   res.redirect("/");
 };
 
-const handlePostMessage = (req, res) => {
-  const { name, role, topic, content } = req.body;
-  const sanitizedName = sanitizePlainText(name);
-  const sanitizedRole = sanitizePlainText(role);
-  const sanitizedTopic = sanitizePlainText(topic);
-  const sanitizedContent = sanitizePlainText(content);
+const handlePostMessage = [
+  validateMessageForm,
+  checkValidationResult,
+  (req, res) => {
+    const { name, role, topic, content } = req.body;
+    const newEntry = {
+      name,
+      role,
+      topic,
+      content,
+      timestamp: new Date(),
+    };
 
-  const newEntry = {
-    name: sanitizedName,
-    role: sanitizedRole,
-    topic: sanitizedTopic,
-    content: sanitizedContent,
-    timestamp: new Date(),
-  };
-
-  saveMessage(newEntry);
-  res.redirect("/");
-};
+    saveMessage(newEntry);
+    res.redirect("/");
+  },
+];
 
 export {
   renderBoardPage,
