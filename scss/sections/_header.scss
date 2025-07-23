@@ -11,6 +11,10 @@
     font-size: var(--font-size-2xl);
     color: var(--color-lime-400);
     margin: 0;
+
+    @media (max-width: 350px) {
+      font-size: var(--font-size-xl);
+    }
   }
 }
 

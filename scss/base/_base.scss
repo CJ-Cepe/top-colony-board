@@ -1,6 +1,7 @@
 body {
   font-family: var(--font-family-base);
   color: var(--color-maroon-900);
+  min-width: 300px;
 
   display: grid;
   grid-template-areas:
