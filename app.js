@@ -22,12 +22,24 @@ app.use(
 
 app.use("/", router);
 
+// catch all error handler
 app.use((err, req, res, next) => {
   console.error(err);
-  res.status(500).send(err.message);
+  const statusCode = err.statusCode || 500;
+  res.status(statusCode);
+
+  if (process.env.NODE_ENV === "production") {
+    res.send("Internal Server Error");
+  } else {
+    res.json({
+      status: "error",
+      message: err.message,
+      stack: err.stack,
+    });
+  }
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`Colony Board is live at http://localhost:${PORT}`);

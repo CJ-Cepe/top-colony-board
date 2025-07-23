@@ -13,6 +13,9 @@ router.get("/new", ensureIdentity, renderNewMessageForm);
 router.get("/reborn", handleRebornRequest);
 router.post("/message", handlePostMessage);
 
-// to add error handler
+// simple 404 handler
+router.use((req, res, next) => {
+  res.status(404).send("Sorry, page not found!");
+});
 
 export { router };
