@@ -40,7 +40,11 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.NODE_ENV === "production" ? "0.0.0.0" : "localhost";
 
-app.listen(PORT, () => {
-  console.log(`Colony Board is live at http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Colony Board is live. Listening on port ${PORT}.`);
+  if (process.env.NODE_ENV !== "production") {
+    console.log(`Access locally at http://${HOST}:${PORT}`);
+  }
 });
