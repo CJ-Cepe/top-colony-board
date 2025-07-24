@@ -1,0 +1,532 @@
+/* Reset From: https://piccalil.li/blog/a-more-modern-css-reset/ */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  /* padding: 0; */
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+button,
+a {
+  /* Core appearance reset */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Zero out padding, margin, border */
+  background: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  /* Font inheritance and crucial line-height normalization */
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1; /* Explicitly set to 1 for tight text bounding box */
+  color: inherit;
+  text-decoration: none;
+  text-align: center;
+  /* Standard cursor */
+  cursor: pointer;
+  /* Display property: inline-flex is great for internal alignment,
+     but sometimes inline-block can resolve height issues if flex is misbehaving.
+     Let's stick with inline-flex as it's powerful, but ensure consistency. */
+  display: inline-flex;
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  /* Specific Firefox button reset */
+}
+button::-moz-focus-inner,
+a::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "ComicRelief";
+  src: url("/fonts/ComicRelief-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rajdhani";
+  src: url("/fonts/Rajdhani-Medium.ttf") format("truetype");
+  font-weight: medium;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  /* === Colors === */
+  --color-bronze-500: #b38658;
+  --color-walnut-600: #6c4f3d;
+  --color-yellow-400: #e2a94f;
+  --color-gold-500: #d0ac7a;
+  --color-lime-400: #a6e156;
+  --color-sand-100: #f2eee3;
+  --color-maroon-900: #3b1c24;
+  --color-yellow-600: #c69301;
+  /* === Typography === */
+  /* Font families */
+  --font-family-heading: "Rajdhani", Arial, sans-serif;
+  --font-family-base: "ComicRelief", Arial, sans-serif;
+  /* Font sizes */
+  --font-size-base: calc(14rem / 16);
+  --line-height-base: 1.5;
+  --scale-ratio: 1.333;
+  --font-size-sm: calc(var(--font-size-base) / var(--scale-ratio));
+  --font-size-md: var(--font-size-base);
+  --font-size-lg: calc(var(--font-size-base) * var(--scale-ratio));
+  --font-size-xl: calc(
+    var(--font-size-base) * var(--scale-ratio) * var(--scale-ratio)
+  );
+  --font-size-2xl: calc(
+    var(--font-size-base) * var(--scale-ratio) * var(--scale-ratio) *
+      var(--scale-ratio)
+  );
+  /* Font weights */
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  /* Spacing */
+  --spacing-unit: 0.5rem; /* Base spacing unit */
+  --spacing-sm: var(--spacing-unit); /* 8px */
+  --spacing-md: calc(var(--spacing-unit) * 2); /* 16px */
+  --spacing-lg: calc(var(--spacing-unit) * 3); /* 24px */
+}
+
+body {
+  font-family: var(--font-family-base);
+  color: var(--color-maroon-900);
+  min-width: 300px;
+  display: grid;
+  grid-template-areas: "header" "main";
+  grid-template-rows: auto 1fr;
+}
+body > header {
+  grid-area: header;
+}
+body > main {
+  grid-area: main;
+}
+body::selection {
+  color: var(--color-sand-100);
+  background: var(--color-copper-700);
+}
+
+h1,
+h2 {
+  font-weight: bold;
+  font-family: var(--font-family-heading);
+}
+
+.button {
+  padding: 0.5em;
+  text-decoration: none;
+  border-radius: 0.5vw;
+  border: 1px dashed var(--color-maroon-900);
+  background-color: var(--color-yellow-600);
+  transition: background-color 0.15s ease;
+}
+.button:hover {
+  background-color: var(--color-yellow-400);
+}
+
+.page-header {
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--color-walnut-600);
+  display: flex;
+  align-items: center;
+  border-bottom: 3px dashed var(--color-maroon-900);
+}
+.page-header h1 {
+  font-size: var(--font-size-2xl);
+  color: var(--color-lime-400);
+  margin: 0;
+}
+@media (max-width: 350px) {
+  .page-header h1 {
+    font-size: var(--font-size-xl);
+  }
+}
+
+.page-header > nav {
+  display: none;
+}
+@media (max-width: 685px) {
+  .page-header > nav {
+    margin-left: auto;
+    display: flex;
+  }
+}
+.page-header > nav .ham-btn {
+  align-self: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: transparent;
+  height: 70%;
+  width: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: relative;
+}
+.page-header > nav .ham-btn > div {
+  background-color: var(--color-maroon-900);
+  height: 2px;
+  width: 100%;
+  border-radius: 5px;
+  transition: all 0.1s ease-in-out;
+}
+.page-header > nav .ham-btn > div:nth-child(2) {
+  background-color: transparent;
+  position: relative;
+}
+.page-header > nav .ham-btn > div:nth-child(2) > div {
+  position: absolute;
+  background-color: var(--color-maroon-900);
+  height: 2px;
+  width: 100%;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+.page-header > nav .ham-btn[aria-expanded=true] > div:nth-child(1) {
+  transform: translate(50%);
+  opacity: 0;
+  visibility: hidden;
+}
+.page-header > nav .ham-btn[aria-expanded=true] > div:nth-child(2) > div:nth-child(1) {
+  transform: rotate(45deg);
+}
+.page-header > nav .ham-btn[aria-expanded=true] > div:nth-child(2) > div:nth-child(2) {
+  transform: rotate(-45deg);
+}
+.page-header > nav .ham-btn[aria-expanded=true] > div:nth-child(3) {
+  transform: translate(-50%);
+  opacity: 0;
+  visibility: hidden;
+}
+
+main {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  overflow-x: hidden;
+}
+@media (max-width: 685px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.message-board {
+  padding: var(--spacing-lg);
+  background-color: var(--color-bronze-500);
+}
+.message-board h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.message-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  justify-items: center;
+}
+@media (max-width: 350px) {
+  .message-card-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+.message-card {
+  background-color: var(--color-walnut-600);
+  max-width: 400px;
+  width: 100%;
+  aspect-ratio: 1/1;
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  -webkit-clip-path: polygon(0% 0%, calc(100% - 30px) 0%, 100% 30px, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, calc(100% - 30px) 0%, 100% 30px, 100% 100%, 0% 100%);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.message-card:hover, .message-card:focus-within {
+  transform: scale(1.05);
+  z-index: 2;
+}
+.message-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+  transform: translate(0, 0);
+  transform-origin: top right;
+  z-index: 1;
+  box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* CARD CONTENTS */
+.card-topic {
+  font-weight: bold;
+  font-size: var(--font-size-lg);
+  text-transform: capitalize;
+  color: var(--color-sand-100);
+}
+
+.card-content {
+  margin: auto 0 auto;
+  text-wrap: balance;
+  text-wrap: pretty;
+  color: var(--color-yellow-400);
+}
+.card-content::before, .card-content::after {
+  content: '"';
+}
+
+.card-name {
+  margin-top: auto;
+  text-transform: uppercase;
+  font-weight: 600;
+  align-self: flex-end;
+  color: var(--color-gold-500);
+}
+
+.card-timestamp {
+  align-self: flex-end;
+  font-style: italic;
+  color: var(--color-gold-500);
+}
+
+.message-form {
+  background-color: var(--color-bronze-500);
+  padding: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.message-form h2 {
+  text-align: center;
+}
+
+.form {
+  max-width: 25rem;
+  display: grid;
+  grid-template-areas: "topic topic" "content content" "return send";
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: var(--spacing-lg);
+  margin: var(--spacing-lg);
+}
+.form label > select,
+.form label > textarea {
+  display: block;
+  color: var(--color-maroon-900);
+  margin-top: var(--spacing-sm);
+  background-color: var(--color-gold-500);
+}
+
+.form-topic {
+  grid-area: topic;
+  width: 100%;
+}
+.form-topic > select {
+  text-align: center;
+  width: 100%;
+}
+
+.form-content {
+  grid-area: content;
+  width: 100%;
+}
+.form-content > textarea {
+  width: 100%;
+  resize: vertical;
+  padding: var(--spacing-sm);
+}
+
+.form-return {
+  grid-area: return;
+  width: 100%;
+}
+
+.form-send {
+  grid-area: send;
+  width: 100%;
+}
+
+.message-form > img:nth-child(3) {
+  margin-top: 3rem;
+}
+
+.page-aside {
+  min-width: 290px;
+  max-width: 300px;
+  background-color: var(--color-gold-500);
+  padding: var(--spacing-lg);
+  border-left: 3px dashed var(--color-maroon-900);
+  position: static;
+}
+@media (max-width: 685px) {
+  .page-aside {
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    border-bottom: 3px dashed var(--color-maroon-900);
+    pointer-events: none;
+    transform: translateX(20px);
+    transition: transform 0.1s ease-out, opacity 0.2s ease-out, visibility 0s linear 0.2s;
+  }
+  .page-aside.visible {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform 0.1s ease-out, opacity 0.2s ease-out, visibility 0s linear 0s;
+  }
+}
+
+/* PROFILE SECTION */
+.profile p > span {
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.profile .profile-title {
+  margin-bottom: var(--spacing-md);
+}
+.profile .profile-name {
+  text-transform: uppercase;
+}
+.profile .profile-description {
+  text-transform: lowercase;
+  margin-bottom: var(--spacing-lg);
+}
+.profile .profile-reborn {
+  margin-right: 5px;
+}
+
+/* HORIZONTAL RULE */
+hr {
+  margin: var(--spacing-lg) 0;
+  border: 0;
+  border-top: 2px dashed var(--color-maroon-900);
+}
+
+/* INSTRUCTIONS SECTION*/
+.rules .rules-subtitle {
+  margin: var(--spacing-md) 0;
+}
+.rules .rules-list {
+  padding-left: 2rem;
+  text-wrap: balance;
+  text-wrap: pretty;
+}
+.rules .rules-list em {
+  font-weight: 700;
+}
+.rules p:last-child {
+  margin-top: var(--spacing-md);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=style.css.map */
