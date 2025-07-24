@@ -8,6 +8,7 @@ import {
 const renderBoardPage = async (req, res) => {
   const { name, role, description } = req.session;
   const messages = await getAllMessages();
+  messages.reverse();
   res.render("home", { viewType: "board", name, role, description, messages });
 };
 
