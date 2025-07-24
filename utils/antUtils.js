@@ -1,11 +1,12 @@
 const roles = {
   common: ["worker", "scout", "soldier", "cleaner"],
-  uncommon: ["lazy-ant", "antfluencer", "drone"],
+  uncommon: ["lazy-ant", "nurse", "drone"],
   unusual: [
     "impostor-termite",
     "queen-lover",
     "philosopher-ant",
     "gossiping-ant",
+    "antfluencer",
   ],
 };
 
@@ -19,8 +20,8 @@ const description = {
 
   "lazy-ant":
     "Frequently seen napping. Occasionally thinks about helping... later.",
-  antfluencer:
-    "Buzzing with style and updates. Lives for aesthetics and attention.",
+  nurse:
+    "A nurturing ant responsible for tending to eggs, larvae, and unwell ants.",
   drone:
     "A winged ant with royal aspirations. Mostly daydreaming or waiting for the queen.",
 
@@ -32,6 +33,8 @@ const description = {
     "Always questioning the colony’s purpose. Existentialism in the tunnels.",
   "gossiping-ant":
     "Knows everything about everyone and can’t wait to share it.",
+  antfluencer:
+    "Buzzing with style and updates. Lives for aesthetics and attention.",
 };
 
 const topics = {
@@ -49,17 +52,18 @@ const topics = {
     "Strange scent",
   ],
   cleaner: ["Trash locations", "Rot reports", "Nest hygiene", "Dead ant alert"],
+
   "lazy-ant": [
     "Nap thoughts",
     "Procrastination logs",
     "Work is hard",
     "Should we unionize?",
   ],
-  antfluencer: [
-    "Aesthetic tunnel pics",
-    "AntFit tips",
-    "Collab with beetle?",
-    "Queen shoutouts",
+  nurse: [
+    "Egg cluster status",
+    "Larva growth log",
+    "Brood chamber too cold",
+    "Feeding schedule update",
   ],
   drone: ["Mating flight notes", "Wings status", "Daydreams", "Queen thoughts"],
   "impostor-termite": [
@@ -86,12 +90,18 @@ const topics = {
     "Ant vs ant",
     "Tunnel rumors",
   ],
+  antfluencer: [
+    "Aesthetic tunnel pics",
+    "AntFit tips",
+    "Collab with beetle?",
+    "Queen shoutouts",
+  ],
 };
 
 function getRandomRole() {
   const roll = Math.random();
-  if (roll < 0.7) return pickRandom(roles.common);
-  if (roll < 0.9) return pickRandom(roles.uncommon);
+  if (roll < 0.8) return pickRandom(roles.common);
+  if (roll < 0.95) return pickRandom(roles.uncommon);
   return pickRandom(roles.unusual);
 }
 

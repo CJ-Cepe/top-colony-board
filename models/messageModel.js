@@ -1,16 +1,3 @@
-// [x] Create DB
-// [x] create table & cols
-// [x] install postgresql - pg
-// [x] create db folder to contain db scripts
-// [x] write & do query
-// [x] integrate with controllers
-// [x] change to async
-// [x] update .env for db
-// [x] fix date/timestamp
-
-// additional
-// populate with script
-
 import dbPool from "./dbPool.js";
 
 async function getAllMessages() {
@@ -51,12 +38,3 @@ async function saveMessage(newMessage) {
 }
 
 export { getAllMessages, saveMessage };
-
-/*
-table - messages
-- name
-- role
-- topic
-- message
-- timestamp
-*/
