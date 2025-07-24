@@ -5,9 +5,9 @@ import {
   checkValidationResult,
 } from "../middlewares/sanitizer.js";
 
-const renderBoardPage = (req, res) => {
+const renderBoardPage = async (req, res) => {
   const { name, role, description } = req.session;
-  const messages = getAllMessages();
+  const messages = await getAllMessages();
   res.render("home", { viewType: "board", name, role, description, messages });
 };
 
@@ -24,7 +24,7 @@ const handleRebornRequest = (req, res) => {
 const handlePostMessage = [
   validateMessageForm,
   checkValidationResult,
-  (req, res) => {
+  async (req, res) => {
     const { name, role, topic, content } = req.body;
     const newEntry = {
       name,
@@ -34,7 +34,7 @@ const handlePostMessage = [
       timestamp: new Date(),
     };
 
-    saveMessage(newEntry);
+    await saveMessage(newEntry);
     res.redirect("/");
   },
 ];

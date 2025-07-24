@@ -1,54 +1,62 @@
-import fs from "node:fs";
-import path from "node:path";
-import process from "node:process";
+// [x] Create DB
+// [x] create table & cols
+// [x] install postgresql - pg
+// [x] create db folder to contain db scripts
+// [x] write & do query
+// [x] integrate with controllers
+// [x] change to async
+// [x] update .env for db
+// [x] fix date/timestamp
 
-const messagesFile =
-  process.env.MESSAGES_FILE || path.join(process.cwd(), "data/messages.json");
+// additional
+// populate with script
 
-function getAllMessages() {
-  try {
-    const data = fs.readFileSync(messagesFile, "utf-8");
-    const messages = JSON.parse(data);
+import dbPool from "./dbPool.js";
 
-    const processedMessages = messages.map((message) => {
-      let dateObj;
-      if (typeof message.timestamp === "string") {
-        dateObj = new Date(message.timestamp);
-      } else if (message.timestamp instanceof Date) {
-        dateObj = message.timestamp;
-      } else {
-        dateObj = new Date();
-      }
+async function getAllMessages() {
+  const { rows } = await dbPool.query("SELECT * FROM messages");
 
-      const formattedDateString = dateObj.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
+  // transform timestamp to month day, year
+  const processedMessages = rows.map((message) => {
+    let dateObj;
+    if (typeof message.timestamp === "string") {
+      dateObj = new Date(message.timestamp);
+    } else if (message.timestamp instanceof Date) {
+      dateObj = message.timestamp;
+    } else {
+      dateObj = new Date();
+    }
 
-      return {
-        ...message,
-        timestamp: formattedDateString,
-      };
+    const formattedDateString = dateObj.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
 
-    return processedMessages;
-    //return JSON.parse(data);
-  } catch (err) {
-    console.error("Failed to read messages:", err);
-    return [];
-  }
+    return {
+      ...message,
+      timestamp: formattedDateString,
+    };
+  });
+
+  return processedMessages;
 }
 
-function saveMessage(newMessage) {
-  const messages = getAllMessages();
-  messages.push(newMessage);
-
-  try {
-    fs.writeFileSync(messagesFile, JSON.stringify(messages, null, 2));
-  } catch (err) {
-    console.error("Failed to write message:", err);
-  }
+async function saveMessage(newMessage) {
+  const { name, role, topic, content, timestamp } = newMessage;
+  await dbPool.query(
+    "INSERT INTO messages (name, role, topic, content, timestamp) VALUES ($1, $2, $3, $4, $5)",
+    [name, role, topic, content, timestamp]
+  );
 }
 
 export { getAllMessages, saveMessage };
+
+/*
+table - messages
+- name
+- role
+- topic
+- message
+- timestamp
+*/
