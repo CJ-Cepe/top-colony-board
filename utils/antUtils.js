@@ -101,7 +101,7 @@ const topics = {
 function getRandomRole() {
   const roll = Math.random();
   if (roll < 0.8) return pickRandom(roles.common);
-  if (roll < 0.95) return pickRandom(roles.uncommon);
+  if (roll < 0.9) return pickRandom(roles.uncommon);
   return pickRandom(roles.unusual);
 }
 
