@@ -1,5 +1,6 @@
 import { Pool } from "pg";
 import process from "node:process";
+
 let dbPool;
 
 if (process.env.NODE_ENV === "production") {
