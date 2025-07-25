@@ -1,5 +1,6 @@
 import path from "node:path";
 import process from "node:process";
+import compression from "compression";
 import express from "express";
 import session from "express-session";
 import pgSession from "connect-pg-simple";
@@ -14,6 +15,7 @@ app.set("view engine", "ejs");
 // correctly read the X-Forwarded-Proto header from the proxy
 app.set("trust proxy", 1);
 
+app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
