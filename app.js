@@ -10,6 +10,10 @@ const app = express();
 app.set("views", path.join(process.cwd(), "views"));
 app.set("view engine", "ejs");
 
+// tells express to trust the proxy (Railway's load balancer)
+// correctly read the X-Forwarded-Proto header from the proxy
+app.set("trust proxy", 1);
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -30,6 +34,7 @@ app.use(
       maxAge: 24 * 60 * 60 * 1000, // 1 day (in milliseconds)
       httpOnly: true, // prevents client-side JS from accessing the cookie
       secure: process.env.NODE_ENV === "production", // only send cookie over HTTPS in production
+      sameSite: "lax", //  'lax' for same-site requests
     },
   })
 );
